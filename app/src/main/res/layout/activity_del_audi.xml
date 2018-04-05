@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.auditorium.del_audi">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp"
+        android:text="Enter Room for deletion"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
+
+    <EditText
+        android:id="@+id/edit_del_audi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_del_audi_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="14dp"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+</RelativeLayout>

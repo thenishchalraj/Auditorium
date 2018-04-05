@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.auditorium.req_details">
+
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="31dp"
+        android:text="Show Name" />
+
+    <TextView
+        android:id="@+id/text_dept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_name"
+        android:layout_marginTop="24dp"
+        android:text="Show Department" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_dept"
+        android:layout_marginTop="24dp"
+        android:text="Show Date" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/text_date"
+        android:layout_below="@+id/text_date"
+        android:layout_marginTop="34dp"
+        android:text="Show Time" />
+
+    <TextView
+        android:id="@+id/text_requested_audi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_time"
+        android:layout_marginTop="28dp"
+        android:text="Show Requested Auditorium" />
+
+    <TextView
+        android:id="@+id/text_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_requested_audi"
+        android:layout_marginTop="30dp"
+        android:text="Show Reason" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_not_allot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="12dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/no" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_allot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button_not_allot"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/yes" />
+
+</RelativeLayout>

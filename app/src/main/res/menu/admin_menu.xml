@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="com.example.root.Auditorium.MainActivity">
+<item
+    android:id="@+id/del_audi"
+    android:orderInCategory="100"
+    android:title="Delete Auditorium"
+    app:showAsAction="never" />
+<item
+    android:id="@+id/change_pass_admin"
+    android:orderInCategory="100"
+    android:title="Change Password"
+    app:showAsAction="never" />
+<item
+    android:id="@+id/logout_admin"
+    android:orderInCategory="100"
+    android:title="Logout"
+    app:showAsAction="never" />
+</menu>

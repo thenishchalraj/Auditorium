@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.root.auditorium">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".audi_list" />
+        <activity android:name=".audidetail" />
+        <activity android:name=".req_form" />
+        <activity android:name=".a_room" />
+        <activity android:name=".req_details" />
+        <activity android:name=".change_password" />
+        <activity
+            android:name=".admin_only"
+            android:label="@string/title_activity_admin_only"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".user_detail" />
+        <activity android:name=".del_audi" />
+        <activity
+            android:name=".delete_this"
+            android:label="@string/title_activity_delete_this"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".add_user" />
+        <activity android:name=".add_audi"></activity>
+    </application>
+
+</manifest>
