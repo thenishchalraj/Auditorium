@@ -17,7 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.root.auditorium.PojoClasses.all_data;
+import com.example.root.auditorium.PojoClasses.user_data;
+import com.example.root.auditorium.PojoClasses.user_data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +39,6 @@ import static com.example.root.auditorium.Interface.MInterface.api;
 public class view_user extends Fragment {
     private static final String TAG = "activity_view_user";
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,21 +47,33 @@ public class view_user extends Fragment {
         ListView ll = (ListView)view.findViewById(R.id.user_listview);
 
         SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
         String token1 = mSettings.getString("token","ttt");
 
         //calling the api
-        Call<List<all_data>> call = api.getUserList(token1.replace("\"", ""));
+        Call<List<user_data>> call = api.getUserList(token1.replace("\"", ""));
 
-        call.enqueue(new Callback<List<all_data>>() {
+        call.enqueue(new Callback<List<user_data>>() {
             @Override
-            public void onResponse(Call<List<all_data>> call, Response<List<all_data>> response) {
-                List<all_data> users = response.body();
+            public void onResponse(Call<List<user_data>> call, Response<List<user_data>> response) {
+                List<user_data> users = response.body();
 
                 //now, here make the items in the response list to be displayable in the list view made
                 String[] lst = new String[users.size()];
                 for (int k = 0; k<users.size(); k++) {
                     lst[k] = users.get(k).getName();
+                    Log.d("userId", users.get(k).get_id());
+
+
+                    ll.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent j = new Intent(getActivity(),user_detail.class);
+                            //String selectedFromList = (String) ll.getItemAtPosition(i);
+                            j.putExtra("audi_id",users.get(i).get_id());
+                            startActivity(j);
+                        }
+                    });
+
                 }
 
                 //defining and Declaring an ArrayAdapter to set items to ListView
@@ -71,7 +83,7 @@ public class view_user extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<all_data>> call, Throwable t) {
+            public void onFailure(Call<List<user_data>> call, Throwable t) {
 
             }
         });

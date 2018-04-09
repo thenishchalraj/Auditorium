@@ -13,19 +13,19 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="125dp"
-        android:text="Enter Room for deletion"
+        android:text="Select Room for deletion"
         android:textSize="20dp"
         android:textColor="@color/colorBlack"/>
 
-    <EditText
-        android:id="@+id/edit_del_audi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView13"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/audi_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="205dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/float_del_audi_button"
@@ -37,5 +37,6 @@
         android:layout_marginEnd="14dp"
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_delete" />
+
 
 </RelativeLayout>

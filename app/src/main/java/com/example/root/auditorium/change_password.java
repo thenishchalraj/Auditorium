@@ -5,18 +5,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.Call;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.root.auditorium.Interface.MInterface;
 import com.example.root.auditorium.PojoClasses.change_pass;
-
-import java.util.List;
-
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -48,7 +42,8 @@ public class change_password extends AppCompatActivity {
 
         up.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 if(cp.getText().toString().equals(np.getText().toString()))
                     Toast.makeText(getApplicationContext(),"New Password can't be same as Current Password !",Toast.LENGTH_LONG).show();
                 if(cp.getText().toString().equals(cnp.getText().toString()))
@@ -59,12 +54,12 @@ public class change_password extends AppCompatActivity {
                     {
 
                         change_pass changePass = new change_pass(cp.getText().toString(),np.getText().toString(),cnp.getText().toString());
-                        retrofit2.Call<List<change_pass>> call = MInterface.api.updatePass(token1.replace("\"", ""),changePass);
+                        retrofit2.Call<change_pass> call = MInterface.api.updatePass(token1.replace("\"", ""),changePass);
 
-                        call.enqueue(new Callback<List<change_pass>>() {
+                        call.enqueue(new Callback<change_pass>() {
                             @Override
-                            public void onResponse(retrofit2.Call<List<change_pass>> call, Response<List<change_pass>> response) {
-                             
+                            public void onResponse(retrofit2.Call<change_pass> call, Response<change_pass> response) {
+
                                 if(response.code()==200 || response.code()==201){
 
                                     Toast.makeText(getApplicationContext(),"Password Changed Successfully",Toast.LENGTH_LONG).show();
@@ -74,12 +69,13 @@ public class change_password extends AppCompatActivity {
                                         //Toast.makeText(getApplicationContext(),"Password Changed Successfully",Toast.LENGTH_LONG).show();
                                         Intent i = new Intent(change_password.this,admin_only.class);
                                         startActivity(i);
+                                        finish();
                                     }
                                     else
-                                        if(response.code()==200)
                                     {
                                         Intent i = new Intent(change_password.this,audi_list.class);
                                         startActivity(i);
+                                        finish();
                                     }
 
                                 }
@@ -92,12 +88,11 @@ public class change_password extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(retrofit2.Call<List<change_pass>> call, Throwable t) {
+                            public void onFailure(retrofit2.Call<change_pass> call, Throwable t) {
 
                             }
                         });
 
-                        //Toast.makeText(getApplicationContext(), "Password changed successfully !", Toast.LENGTH_SHORT).show();
 
                     }
 

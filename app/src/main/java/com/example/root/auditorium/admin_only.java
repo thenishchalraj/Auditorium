@@ -1,16 +1,28 @@
 package com.example.root.auditorium;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.root.auditorium.PojoClasses.auth_data;
+import com.example.root.auditorium.PojoClasses.log_out;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.root.auditorium.Interface.MInterface.api;
 
 public class admin_only extends AppCompatActivity {
 
@@ -21,7 +33,6 @@ public class admin_only extends AppCompatActivity {
     private ViewPager mViewPager;
     Toolbar toolbar;
     private FloatingActionButton f1;
-
 
 
     @Override
@@ -96,6 +107,7 @@ public class admin_only extends AppCompatActivity {
        return super.onCreateOptionsMenu(menu);
     }
 
+
     //to make the options in the menu workable
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,8 +119,30 @@ public class admin_only extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.logout_admin:
-                Intent j = new Intent(admin_only.this, login.class);
-                startActivity(j);
+                SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String token1 = mSettings.getString("token","ttt");
+                //calling the api
+                Call<log_out> call = api.getLogout(token1.replace("\"", ""));
+
+                call.enqueue(new Callback<log_out>() {
+                    @Override
+                    public void onResponse(Call<log_out> call, Response<log_out> response) {
+
+                        Log.d("lol",response.toString());
+                        if(response.code()==200){
+                            Intent j = new Intent(admin_only.this, login.class);
+                            startActivity(j);
+                            finish();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<log_out> call, Throwable t) {
+
+                        Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case R.id.del_audi:
                 Intent k = new Intent(admin_only.this, del_audi.class);

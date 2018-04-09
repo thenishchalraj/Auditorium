@@ -51,9 +51,9 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="68dp"
+        android:layout_marginTop="193dp"
         android:text="Login using your registered Username and Password"
         android:textColor="@color/colorBlack" />
 
@@ -61,9 +61,9 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/textView3"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/lnctlogo" />
 
     <TextView
@@ -74,5 +74,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="181dp"
         android:textColor="@color/colorRed" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="146dp"
+        android:text="Welcome !"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
 
 </RelativeLayout>

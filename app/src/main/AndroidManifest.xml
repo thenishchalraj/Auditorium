@@ -21,7 +21,6 @@
         <activity android:name=".audi_list" />
         <activity android:name=".audidetail" />
         <activity android:name=".req_form" />
-        <activity android:name=".a_room" />
         <activity android:name=".req_details" />
         <activity android:name=".change_password" />
         <activity

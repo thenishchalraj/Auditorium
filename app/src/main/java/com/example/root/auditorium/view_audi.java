@@ -46,10 +46,7 @@ public class view_audi extends Fragment {
 
         final ListView ll2 =(ListView)view.findViewById(R.id.audi_list);
 
-
-
         SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
         String token1 = mSettings.getString("token","ttt");
 
         //calling the api
@@ -64,23 +61,24 @@ public class view_audi extends Fragment {
 
                 //now, here make the items in the response list to be displayable in the list view made
                 String[] lst = new String[audis.size()];
+                //Log.d(".............AUDIS SIZE",String.valueOf(audis.size()));
+                //Log.d("......NMMMMMMM",response.body().toString());
                 for (int k = 0; k<audis.size(); k++){
                     lst[k] = audis.get(k).getAudi();
+                    //Log.d("audiMMMMd", audis.get(k).getAudi());
+                    //Log.d("audiId", audis.get(k).get_id());
 
-                    //lst.add(lst.get(k));
-
-/*                    ll2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    ll2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            Intent j = new Intent(audi_list.this,audidetail.class);
-
+                            Intent j = new Intent(getActivity(),audidetail.class);
                             String selectedFromList = (String) ll2.getItemAtPosition(i);
-
                             j.putExtra("audi_name",selectedFromList);
+                            j.putExtra("audi_id",audis.get(i).get_id());
                             startActivity(j);
                         }
                     });
-*/
+
                 }
 
                 //defining and Declaring an ArrayAdapter to set items to ListView

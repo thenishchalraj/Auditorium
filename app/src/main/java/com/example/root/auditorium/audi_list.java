@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -20,6 +21,7 @@ import com.example.root.auditorium.PojoClasses.auth_data;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -44,23 +46,18 @@ public class audi_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        //getting username from login screen
-        Bundle u = getIntent().getExtras();
-        String user = u.getString("user_name");
+        SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String user = mSettings.getString("userwa","user");
+        String token1 = mSettings.getString("token","ttt");
 
         //changing the ActionBar
-        setTitle("Welcome " + user);
+        setTitle("Welcome " + user.replace("\"",""));
         setContentView(R.layout.activity_audi_list);
 
         req = (Button)findViewById(R.id.request_button);
 
         //defining a list view
         final ListView ll2 =(ListView)findViewById(R.id.audi_listview);
-
-
-        SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        String token1 = mSettings.getString("token","ttt");
         Log.d("message2",token1);
 
         //calling the api
@@ -71,29 +68,28 @@ public class audi_list extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<all_data>> call, Response<List<all_data>> response) {
 
-                Log.d("lol", String.valueOf(response.code()));
                 Log.d("haha",response.toString());
                 List<all_data> audis = response.body();
 
                 //now, here make the items in the response list to be displayable in the list view made
-                String[] lst = new String[audis.size()];
+                List<String> lst = new ArrayList<String>();
+                //String[] lst = new String[audis.size()];
                 for (int k = 0; k<audis.size(); k++){
-                    lst[k] = audis.get(k).getAudi();
+                    lst.add(audis.get(k).getAudi());
+                    //lst[k] = audis.get(k).getAudi();
+                    Log.d("audiId", audis.get(k).get_id());
 
-                    //lst.add(lst.get(k));
-
-/*                    ll2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    ll2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Intent j = new Intent(audi_list.this,audidetail.class);
-
                             String selectedFromList = (String) ll2.getItemAtPosition(i);
-
                             j.putExtra("audi_name",selectedFromList);
+                            j.putExtra("audi_id",audis.get(i).get_id());
                             startActivity(j);
                         }
                     });
-*/
+
                 }
 
                 //defining and Declaring an ArrayAdapter to set items to ListView
@@ -150,6 +146,7 @@ public class audi_list extends AppCompatActivity {
             case R.id.logout_user:
                 Intent l = new Intent(audi_list.this, login.class);
                 startActivity(l);
+                finish();
                 break;
 
         }

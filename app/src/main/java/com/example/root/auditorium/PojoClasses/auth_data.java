@@ -8,8 +8,8 @@ import javax.annotation.Generated;
 
 public class auth_data {
 
+    //username and password
     private String user;
-
     private String pass;
 
     public auth_data(String user, String pass) {
@@ -17,6 +17,7 @@ public class auth_data {
         this.pass = pass;
     }
 
+    //token
     private String token;
 
     public auth_data(String token) {
@@ -30,4 +31,5 @@ public class auth_data {
     public void setToken(String token) {
         this.token = token;
     }
+
 }

@@ -43,6 +43,9 @@ public class login extends Activity {
     EditText p; //password field
     TextView m;
 
+  //  SharedPreferences logIn;
+  //  SharedPreferences isAdm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,28 @@ public class login extends Activity {
         u=(EditText)findViewById(R.id.editText);
         p=(EditText)findViewById(R.id.editText3);
         m=(TextView)findViewById(R.id.login_message);
+
+/*
+        //defining shared preference for logged in users
+        logIn = getSharedPreferences("login",MODE_PRIVATE);
+        isAdm = getSharedPreferences("isAdmin",MODE_PRIVATE);
+
+
+        if(logIn.getBoolean("logged",true)){
+           if(isAdm.getBoolean("isAdmin",true))
+           {
+               Intent k = new Intent(login.this,admin_only.class);
+               startActivity(k);
+           }
+           else
+           {
+               Intent k = new Intent(login.this,audi_list.class);
+               startActivity(k);
+           }
+
+        }
+
+*/
 
         //defining shared preferences
             SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -95,21 +120,27 @@ public class login extends Activity {
 
                                 if(response.code()==201)
                                 {
-                                    Intent i = new Intent(login.this, admin_only.class);
+                                   /* isAdm.edit().putBoolean("isAdmin",true).apply();
+                                    logIn.edit().putBoolean("logged",true).apply();
+                                   */ Intent i = new Intent(login.this, admin_only.class);
                                     startActivity(i);
+                                    finish();
                                 }
                                 else
                                 {
-                                    Intent i = new Intent(login.this, audi_list.class);
-                                    i.putExtra("user_name",u.getText().toString());
+
+                                   /* isAdm.edit().putBoolean("isAdmin",false).apply();
+                                    logIn.edit().putBoolean("logged",true).apply();
+                                    */ Intent i = new Intent(login.this, audi_list.class);
                                     startActivity(i);
+                                    finish();
                                 }
 
                             }
                                 else
                                     {
                                         if(response.code()==403 )
-                                            m.setText("Forbidden Error !");
+                                            m.setText("Check username/password !");
                                         else
                                             if(response.code()==401)
                                             m.setText("Unauthorized Error !");
@@ -122,7 +153,7 @@ public class login extends Activity {
                         @Override
                         public void onFailure(Call<auth_data> call, Throwable t) {
 
-                            Toast.makeText(getApplicationContext(),"no",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"no connection",Toast.LENGTH_LONG).show();
                         }
                     });
               }
