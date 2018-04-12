@@ -63,8 +63,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_not_allot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="17dp"

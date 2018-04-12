@@ -3,6 +3,7 @@ package com.example.root.auditorium;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +40,7 @@ import static com.example.root.auditorium.Interface.MInterface.api;
 
 public class audi_list extends AppCompatActivity {
 
-    Button req;
+    FloatingActionButton req;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class audi_list extends AppCompatActivity {
         setTitle("Welcome " + user.replace("\"",""));
         setContentView(R.layout.activity_audi_list);
 
-        req = (Button)findViewById(R.id.request_button);
+        req = (FloatingActionButton) findViewById(R.id.request_button);
 
         //defining a list view
         final ListView ll2 =(ListView)findViewById(R.id.audi_listview);

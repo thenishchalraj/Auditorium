@@ -113,6 +113,7 @@ public class login extends Activity {
                                 JsonElement jsonTree = parser.parse(tokenResponse);
                                 JsonObject jsonObject = jsonTree.getAsJsonObject();
                                 JsonElement token = jsonObject.get("token");
+                                editor.putString("userwa",u.getText().toString());
                                 editor.putString("token",token.toString());
                                 editor.apply();
 

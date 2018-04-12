@@ -11,30 +11,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login">
+        <activity android:name=".login"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".audi_list" />
-        <activity android:name=".audidetail" />
-        <activity android:name=".req_form" />
-        <activity android:name=".req_details" />
-        <activity android:name=".change_password" />
+        <activity android:name=".audi_list"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".audidetail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".req_form"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".req_details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".change_password"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".admin_only"
             android:label="@string/title_activity_admin_only"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".user_detail" />
-        <activity android:name=".del_audi" />
+        <activity android:name=".user_detail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".del_audi"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".delete_this"
             android:label="@string/title_activity_delete_this"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".add_user" />
-        <activity android:name=".add_audi"></activity>
+        <activity android:name=".add_user"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".add_audi"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
